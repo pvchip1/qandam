@@ -8,7 +8,6 @@ curl \
 dirmngr \
 gawk \
 git \
-gnupg2 \
 graphviz \
 g++ \
 libreadline6-dev \
@@ -31,7 +30,8 @@ zlib1g-dev
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
 && apt-get install -y nodejs
-RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+RUN apt install -y gnupg2
+RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 38DBBDC86092693E
 RUN curl -sSL https://get.rvm.io | bash -s
 RUN /bin/bash -l -c ". /etc/profile.d/rvm.sh && rvm install 2.4.5"
 
@@ -47,15 +47,15 @@ WORKDIR /app
 RUN mkdir /db
 RUN mkdir /db/database
 RUN chown -R $USER:$USER /db/database
+
 ADD Gemfile /app
-ADD Gemfile.lock /app/Gemfile.lock
-RUN apt update && apt install -y  ruby-dev
+ADD Gemfile.lock /app
+
 RUN gem update --system
 RUN gem install bundler
+
+RUN bundle install
 RUN bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java
-RUN gem install mtik
-RUN bundle install --no-deployment
-RUN gem update --system 3.0.6
 COPY . /app
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
