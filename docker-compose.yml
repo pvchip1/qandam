@@ -1,0 +1,47 @@
+version: '3'
+services:
+  web:
+    container_name: web
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0' # -e production
+    volumes:
+      - .:/app
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: development
+  db:
+    container_name: db
+    image: "mysql:5.7"
+    volumes:
+      - ./db/database:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: e9972b2dbcc9533158f71da18c790b02
+        - TZ=America/Bahia
+    ports:
+      - "3307:3306"
+
+  routeros:
+    image: evilfreelancer/docker-routeros:6.43.13
+    ports:
+      # FTP
+      - "21"
+      # SSH
+      - "22"
+      # API
+      - "8728:8728"
+      # API SSL
+      #- "8729:8729"
+      # Winbox
+      - "8291:8291"
+      # HTTPS - For connections from VPN SSTP
+      # - "443:443"
+      # HTTP
+      #- "80:80"
+      # PPTP
+      - "1723:1723"
