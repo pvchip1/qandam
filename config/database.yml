@@ -1,13 +1,13 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  username: root
-  password: e9972b2dbcc9533158f71da18c790b02
-  socket: /var/run/mysqld/mysqld.sock
   pool: 5
   timeout: 5000
+  database: qandam
+  username: root
+  password: e9972b2dbcc9533158f71da18c790b02
   host: db
-  
+  port: 3306
 development:
   <<: *default
   database: qandam_development
@@ -19,5 +19,4 @@ test:
 production:
   <<: *default
   database: qandam_production
-  username: qandam
-  password: <%= ENV['QANDAM_DATABASE_PASSWORD'] %>
+
