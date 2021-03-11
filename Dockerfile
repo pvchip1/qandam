@@ -47,6 +47,7 @@ WORKDIR /app
 RUN mkdir /db
 RUN mkdir /db/database
 RUN chown -R $USER:$USER /db/database
+RUN chmod 775 -R /db/database
 
 ADD Gemfile /app
 ADD Gemfile.lock /app

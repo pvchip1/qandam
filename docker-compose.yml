@@ -3,8 +3,7 @@ services:
   web:
     container_name: web
     build: .
-    
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bundle exec rails s -p 3000 -b '0.0.0.0' # -e production
     volumes:
       - .:/app
     ports:
@@ -17,7 +16,7 @@ services:
     container_name: db
     image: "mysql:5.7"
     volumes:
-      - ./db/database:/var/lib/mysql
+    - ./db/database:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
