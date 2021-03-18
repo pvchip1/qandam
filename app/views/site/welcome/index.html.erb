@@ -1,1 +1,14 @@
 <h1>2 - Rendered app/views/site/welcome/index.html.erb</h1>    
+
+
+<% if user_signed_in? %>
+    <p>Usuário Logado email: <%= current_user.email %><%= link_to "Log out", destroy_user_session_path, method: :DELETE %></p>
+  <% else %>
+    <p>Usuário Não logado </p>
+<% end %>
+
+<% if admin_signed_in? %>
+    <p>Admin Logado email: <%= current_admin.email %> <%= link_to "Log out", destroy_admin_session_path, method: :DELETE %></p>
+  <% else %>
+    <p>Usuário Não logado</p>
+<% end %>
