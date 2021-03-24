@@ -14,6 +14,16 @@ namespace :dev do
       puts 'is this not developmnent enviroment!'
     end
   end
+  desc "Assets build "
+  task assets: :environment do
+    if Rails.env.development?
+      show_spinner("cleaning assets...") { %x(bin/rails assets:clean) }
+      show_spinner("clobbering assets...") { %x(bin/rails assets:clobber) }
+      show_spinner("precompile assets...") { %x(bin/rails assets:precompile) }
+    else
+      puts 'is this not developmnent enviroment!'
+    end
+  end
 
   desc 'Add default Admin'
   task add_default_admin: :environment do
