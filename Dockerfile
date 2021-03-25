@@ -55,6 +55,7 @@ ADD Gemfile.lock /app
 RUN gem update --system
 RUN gem install bundler
 
+RUN bundle update
 RUN bundle install
 RUN bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java
 COPY . /app
