@@ -1,4 +1,4 @@
-FROM ruby:2.4.5
+FROM ruby:2.5.0
 RUN apt-get update -y && \
 apt-get install -y autoconf \
 bison \
@@ -33,7 +33,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
 RUN apt install -y gnupg2
 RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 38DBBDC86092693E
 RUN curl -sSL https://get.rvm.io | bash -s
-RUN /bin/bash -l -c ". /etc/profile.d/rvm.sh && rvm install 2.4.5"
+RUN /bin/bash -l -c ". /etc/profile.d/rvm.sh && rvm install 2.5.0"
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list

@@ -14,3 +14,11 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
  Rails.application.config.assets.precompile += %w( admins_backoffice.js admins_backoffice.css )
  Rails.application.config.assets.precompile += %w( users_backoffice.js users_backoffice.css )
  Rails.application.config.assets.precompile += %w( users_backoffice.coffe users_backoffice.scss )
+ Rails.application.config.assets.precompile += %w(  img.png
+                                                    undraw_posting_photo.svg 
+                                                    undraw_profile_1.svg
+                                                    undraw_profile_2.svg
+                                                    undraw_profile_3.svg
+                                                    undraw_profile.svg
+                                                    undraw_rocket.svg
+                                                  )

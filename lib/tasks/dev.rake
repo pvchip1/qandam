@@ -9,6 +9,7 @@ namespace :dev do
       show_spinner("Create database...") { %x(bin/rails db:create) }
       show_spinner("Migrate database...") { %x(bin/rails db:migrate) }
       show_spinner("Creating Admins..."){ %x(bin/rails dev:add_default_admin) }
+      show_spinner("Auto generate Admins..."){ %x(bin/rails dev:generation_admin) }
       show_spinner("Creating Users...") { %x(bin/rails dev:add_default_user) }
     else
       puts 'is this not developmnent enviroment!'
@@ -32,6 +33,16 @@ namespace :dev do
       password: DEFAULT_PASSWORD,
       password_confirmation: DEFAULT_PASSWORD
     )
+  end
+
+  desc 'Generation Admin'
+  task generation_admin: :environment do
+    10.times do |i|
+      Admin.create!(
+      email: Faker::Internet.email,
+      password: DEFAULT_PASSWORD,
+      password_confirmation: DEFAULT_PASSWORD)
+    end
   end
 
   desc 'Add default user'

@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+      </div>
+      <div class="card-body">
+          <div class="table-responsive">
+              <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                        <thead>
+                            <tr role="row">
+                              <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 269px;">ID</th>
+                              <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 402px;">E-mail</th>
+                              <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <% @admins.each do |admin| %>
+                            <tr role="row" class="odd">
+                                <td><%= admin.id %></td>
+                                <td><%= admin.email %></td>
+                                <td>
+                                  <%= link_to nil, class: 'btn btn-primary btn-circle btn-sm' do %>
+                                    <i class="fas fa-edit"></i>
+                                  <% end %>
+                                  <%= link_to nil, class: 'btn btn-danger btn-circle btn-sm' do %>
+                                    <i class="fas fa-trash"></i>
+                                  <% end %>
+                                </td>
+                            </tr>
+                          <% end %>
+                        </tbody>
+                    </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
