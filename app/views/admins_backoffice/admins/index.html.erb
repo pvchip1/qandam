@@ -23,14 +23,57 @@
                                 <td><%= admin.id %></td>
                                 <td><%= admin.email %></td>
                                 <td>
-                                  <%= link_to nil, class: 'btn btn-primary btn-circle btn-sm' do %>
-                                    <i class="fas fa-edit"></i>
-                                  <% end %>
+                                  
+
+<%
+=begin%>
+                                            edit_admins_backoffice_admin_path	GET	/admins_backoffice/admins/:id/edit(.:format)	admins_backoffice/admins#edit
+<%
+=end%>
+
+<%
+=begin%>
+ 
+                                <%= link_to edit_admins_backoffice_admin_path(admin.id), class: 'btn btn-primary btn-circle btn-sm', type: "button", data: { toggle: "modal",target: "#exampleModalCenter" } do %>
+                                  <i class="fas fa-edit"></i>
+                                <% end %> 
+<%
+=end%>
+
+
+                                <%= link_to edit_admins_backoffice_admin_path(admin), class: 'btn btn-primary btn-circle btn-sm', type: "button" do %>
+                                  <i class="fas fa-edit"></i>
+                                <% end %>
+
+
+
+
                                   <%= link_to nil, class: 'btn btn-danger btn-circle btn-sm' do %>
                                     <i class="fas fa-trash"></i>
                                   <% end %>
+
                                 </td>
                             </tr>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Edit Admin</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                          <%#= link_to admins_backoffice_admins_edit_path(admin[:id]), method: :delete, type: 'button', class: "btn btn-secondary", data: { dismiss: "modal" } do %>
+                                            
+                                          <%# end %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                           <% end %>
                         </tbody>
                     </table>
