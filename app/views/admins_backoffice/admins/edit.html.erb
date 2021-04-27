@@ -1,48 +1,60 @@
+
+ <% if @admin.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <% @admin.errors.full_messages.each do |messages| %>
+      <ul>
+        <li><%= messages %></li>
+      </ul>
+      
+    <% end %>
+  </div>
+<% end %> 
+
 <div class="row">
-                            <div class="col-xl-4">
-                                <!-- Profile picture card-->
-                                <div class="card">
-                                    <div class="card-header">Profile Picture</div>
-                                    <div class="card-body text-center">
-                                        <!-- Profile picture image-->
-                                        <img class="img-account-profile rounded-circle mb-2" src="assets/img/illustrations/profiles/profile-1.png" alt="">
-                                        <!-- Profile picture help block-->
-                                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                                        <!-- Profile picture upload button-->
-                                        <button class="btn btn-primary" type="button">Upload new image</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-8">
-                                <!-- Account details card-->
-                                <div class="card mb-4">
-                                    <div class="card-header">Account Details</div>
-                                    <div class="card-body">
-                                        <form>
-                                            <!-- Form Row-->
-                                            <div class="form-row">
-                                                <!-- Form Group (first name)-->
-                                                <div class="form-group col-md-12">
-                                                    <label class="small mb-1" for="inputFirstName">E-mail</label>
-                                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your email">
-                                                </div>
-                                                <!-- Form Group (last name)-->
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label class="small mb-1" for="inputLastName">Password</label>
-                                                    <input class="form-control" id="inputLastName" type="text" placeholder="New Password">
-                                                </div>
-                                                <!-- Form Group (first name)-->
-                                                <div class="form-group col-md-6">
-                                                    <label class="small mb-1" for="inputFirstName">Confirm Password</label>
-                                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Confirm your Password">
-                                                </div>
-                                            </div>
-                                            <!-- Save changes button-->
-                                            <button class="btn btn-primary" type="button">Save changes</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+  <div class="col-xl-4">
+    <!-- Profile picture card-->
+    <div class="card">
+      <div class="card-header">Profile Picture</div>
+      <div class="card-body text-center">
+        <!-- Profile picture image-->
+        <img class="img-account-profile rounded-circle mb-2" src="" alt="">
+        <!-- Profile picture help block-->
+        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+        <!-- Profile picture upload button-->
+        <button class="btn btn-primary" type="button">Upload new image</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-8">
+    <!-- Account details card-->
+    <div class="card mb-4">
+      <div class="card-header">Account Details</div>
+      <div class="card-body">
+        <%= form_with(model: [ :admins_backoffice, @admin ], local: true) do |form| %>
+          <!-- Form Row-->
+          <div class="form-row">
+            <!-- Form Group (first name)-->
+            <div class="form-group col-md-12">
+              <%= form.label :email %>
+              <%= form.text_field :email, class: 'form-control', placeholder: 'Email do admin' %>
+            </div>
+            <!-- Form Group (last name)-->
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= form.label :password %>
+              <%= form.password_field :password, class: 'form-control', placeholder: 'New Password' %>
+            </div>
+            <!-- Form Group (first name)-->
+            <div class="form-group col-md-6">
+              <%= form.label :password_confirmation %>
+              <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'New Password' %>
+            </div>
+          </div>
+          <!-- Save changes button-->
+          <%= form.submit 'Save', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

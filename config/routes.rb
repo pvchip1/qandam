@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :admins_backoffice do
        get 'welcome/index'
-       resources :admins, only: %w[ index edit ]
+       resources :admins, only: %i[ index edit update ]
     # get 'admins/index'
     # get 'admins/edit/:id', to: 'admins#edit'
   end
@@ -16,9 +16,8 @@ Rails.application.routes.draw do
 	devise_for :admins
 	devise_for :users
 	
-	get 'start', to: 'site/welcome#index'
-
-	root 'site/welcome#index'
+	get   'start', to: 'site/welcome#index'
+	root  'site/welcome#index'
 
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

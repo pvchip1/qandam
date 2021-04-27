@@ -1,86 +1,84 @@
 <div class="container-fluid">
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
-      <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-      </div>
-      <div class="card-body">
-          <div class="table-responsive">
-              <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="row">
-                    <div class="col-sm-12">
-                      <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                        <thead>
-                            <tr role="row">
-                              <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 269px;">ID</th>
-                              <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 402px;">E-mail</th>
-                              <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80px;">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          <% @admins.each do |admin| %>
-                            <tr role="row" class="odd">
-                                <td><%= admin.id %></td>
-                                <td><%= admin.email %></td>
-                                <td>
-                                  
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+          <div class="row">
+            <div class="col-sm-12">
+              <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                <thead>
+                  <tr role="row">
+                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 269px;">ID</th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 402px;">E-mail</th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80px;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @admins.each do |admin| %>
+                  <tr role="row" class="odd">
+                    <td><%= admin.id %></td>
+                    <td><%= admin.email %></td>
+                    <td>
 
-<%
+
+                      <%
 =begin%>
-                                            edit_admins_backoffice_admin_path	GET	/admins_backoffice/admins/:id/edit(.:format)	admins_backoffice/admins#edit
-<%
+                      edit_admins_backoffice_admin_path GET /admins_backoffice/admins/:id/edit(.:format) admins_backoffice/admins#edit
+                      <%
 =end%>
 
-<%
+                      <%
 =begin%>
- 
-                                <%= link_to edit_admins_backoffice_admin_path(admin.id), class: 'btn btn-primary btn-circle btn-sm', type: "button", data: { toggle: "modal",target: "#exampleModalCenter" } do %>
-                                  <i class="fas fa-edit"></i>
-                                <% end %> 
-<%
+
+                      <%= link_to edit_admins_backoffice_admin_path(admin.id), class: 'btn btn-primary btn-circle btn-sm', type: "button", data: { toggle: "modal",target: "#exampleModalCenter" } do %>
+                      <i class="fas fa-edit"></i>
+                      <% end %>
+                      <%
 =end%>
 
 
-                                <%= link_to edit_admins_backoffice_admin_path(admin), class: 'btn btn-primary btn-circle btn-sm', type: "button" do %>
-                                  <i class="fas fa-edit"></i>
-                                <% end %>
+                      <%= link_to edit_admins_backoffice_admin_path(admin), class: 'btn btn-primary btn-circle btn-sm', type: "button" do %>
+                      <i class="fas fa-edit"></i>
+                      <% end %>
 
 
+                      <%= link_to nil, class: 'btn btn-danger btn-circle btn-sm' do %>
+                      <i class="fas fa-trash"></i>
+                      <% end %>
 
+                    </td>
+                  </tr>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">Edit Admin</h5>
+                          <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        </div>
+                        <div class="modal-body">
 
-                                  <%= link_to nil, class: 'btn btn-danger btn-circle btn-sm' do %>
-                                    <i class="fas fa-trash"></i>
-                                  <% end %>
+                        </div>
 
-                                </td>
-                            </tr>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalCenterTitle">Edit Admin</h5>
-                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                        </div>
-                                        <div class="modal-body">
+                        <div class="modal-footer">
+                          <%#= link_to admins_backoffice_admins_edit_path(admin[:id]), method: :delete, type: 'button', class: "btn btn-secondary", data: { dismiss: "modal" } do %>
 
-                                        </div>
-
-                                        <div class="modal-footer">
-                                          <%#= link_to admins_backoffice_admins_edit_path(admin[:id]), method: :delete, type: 'button', class: "btn btn-secondary", data: { dismiss: "modal" } do %>
-                                            
-                                          <%# end %>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          <% end %>
-                        </tbody>
-                    </table>
+                          <%# end %>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-              </div>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
-</div>
 </div>
