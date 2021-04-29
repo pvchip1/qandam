@@ -36,8 +36,12 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'rails-i18n', '~> 5.1'
+#gem 'i18n'
 gem "tty-spinner"
 gem 'faker'
+gem 'kaminari'
+gem 'kaminari-i18n'
+
 #gem 'pry-rails'
 gem 'awesome_print'
 
