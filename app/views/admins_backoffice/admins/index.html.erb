@@ -14,7 +14,11 @@
                   <tr role="row">
                     <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 269px;">ID</th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 402px;">E-mail</th>
-                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80px;">Actions</th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80px;">
+                      <%= link_to new_admins_backoffice_admin_path, class: 'btn btn-primary btn-circle btn-sm', type: "button" do %>
+                        <i class="fas fa-check"></i>
+                      <% end %>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -46,8 +50,8 @@
                       <% end %>
 
 
-                      <%= link_to nil, class: 'btn btn-danger btn-circle btn-sm' do %>
-                      <i class="fas fa-trash"></i>
+                      <%= link_to admins_backoffice_admin_path(admin), method: :Delete, class: 'btn btn-danger btn-circle btn-sm', data: { confirm: 'Are you sure ?'} do %>
+                        <i class="fas fa-trash"></i>
                       <% end %>
 
                     </td>
