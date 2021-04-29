@@ -7,3 +7,4 @@
 # //= require bootstrap.bundle.min.4.5.3
 # //= require jquery.easing.min.1.0
 # //= require sb-admin-2-4.1.3
+# //= require jquery.growl/javascripts/jquery.growl
