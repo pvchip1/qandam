@@ -3,8 +3,7 @@ class AdminsBackoffice::AdminsController <  AdminsBackofficeController
   before_action :check_password_blank, only: [:update]
 
   def index
-
-    @admins = Admin.all.page(params[:page]).per(5)
+    @admins = Admin.all.page(params[:page]).per(25)
   end
   
   def new
@@ -12,7 +11,6 @@ class AdminsBackoffice::AdminsController <  AdminsBackofficeController
   end
   
   def create
-    
     @admin = Admin.new(set_params_admin)
 
     if @admin.save
@@ -27,15 +25,11 @@ class AdminsBackoffice::AdminsController <  AdminsBackofficeController
   end
   
   def update
-    #require key "admin" comming from form
     if @admin.update(set_params_admin)
       redirect_to edit_admins_backoffice_admin_path, notice: 'Updated Sucess!'
     else
       render :edit
     end
-    # if @admin.errors.any?
-    #   puts admin.errors.full_messages
-    # end
   end
 
   def destroy
