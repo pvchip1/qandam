@@ -1,0 +1,53 @@
+<%
+=begin%>
+ 
+ <% if @question.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <% @question.errors.full_messages.each do |messages| %>
+      <ul>
+        <li><%= messages %></li>
+      </ul>
+      
+    <% end %>
+  </div>
+<% end %>  
+<%
+=end%>
+
+<div class="row">
+  <div class="col-xl-4">
+    <!-- Profile picture card-->
+    <div class="card">
+      <div class="card-header">Profile Picture</div>
+      <div class="card-body text-center">
+        <!-- Profile picture image-->
+        <img class="img-account-profile rounded-circle mb-2" src="" alt="">
+        <!-- Profile picture help block-->
+        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+        <!-- Profile picture upload button-->
+        <button class="btn btn-primary" type="button">Upload new image</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-8">
+    <!-- Account details card-->
+    <div class="card mb-4">
+      <div class="card-header"> <%= "#{action_message}" %> </div>
+      <div class="card-body">
+        <%= form_with(model: [ :admins_backoffice, @question ], local: true) do |form| %>
+          <!-- Form Row-->
+          <div class="form-row">
+            <!-- Form Group (first name)-->
+            <div class="form-group col-md-12">
+              <%= form.label :description %>
+              <%= form.text_area :description, class: 'form-control', placeholder: 'Question description' %>
+            </div>
+            <!-- Form Group (last name)-->
+          </div>
+          <!-- Save changes button-->
+          <%= form.submit 'Save', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
