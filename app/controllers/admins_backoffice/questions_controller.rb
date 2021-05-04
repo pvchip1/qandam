@@ -1,8 +1,19 @@
 class AdminsBackoffice::QuestionsController < AdminsBackofficeController
   before_action :set_id, only: %i[edit update destroy]
+  before_action :set_subject, only: %i[ edit update ]
   def index
     @questions = Question.all
   end
+  
+  def new
+    @question = Question.new
+  end
+  
+  def create
+    @question = Question.create(set_params)
+    @question.save!
+  end
+  
   
   def edit
     @question = Question.find(params[:id])
@@ -33,4 +44,9 @@ class AdminsBackoffice::QuestionsController < AdminsBackofficeController
   def set_id
     @question = Question.find(params[:id])
   end
+
+  def set_subject
+    @question = Subject.find(params[:id])
+  end
+  
 end
